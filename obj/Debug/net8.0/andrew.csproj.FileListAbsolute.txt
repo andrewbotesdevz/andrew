@@ -26,3 +26,4 @@
 /Users/andrewbotes/Projects/Repos/New Hackathon/andrew/obj/Debug/net8.0/andrew.pdb
 /Users/andrewbotes/Projects/Repos/New Hackathon/andrew/obj/Debug/net8.0/andrew.genruntimeconfig.cache
 /Users/andrewbotes/Projects/Repos/New Hackathon/andrew/obj/Debug/net8.0/ref/andrew.dll
+/Users/andrewbotes/Projects/Repos/New Hackathon/andrew/obj/Debug/net8.0/andrew.sourcelink.json

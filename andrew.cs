@@ -1,31 +1,35 @@
 using Robocode.TankRoyale.BotApi;
 using Robocode.TankRoyale.BotApi.Events;
+using Robocode.TankRoyale.BotApi.Graphics;
 
 public class SaucyTankBot : Bot
 {
-    // The main method starts our bot
     static void Main(string[] args)
     {
         new SaucyTankBot().Start();
     }
 
-    // Called when a new round is started -> initialize and do some movement
     public override void Run()
     {
-        // Repeat while the bot is running
+        BodyColor = Color.Gold;
+        GunColor = Color.Gold;
+        RadarColor = Color.Gold;
+        BulletColor = Color.Gold;
+
+
         while (IsRunning)
         {
-            Forward(100);
+            Back(250);
             TurnGunRight(360);
-            Back(100);
+            Forward(300);
             TurnGunRight(360);
         }
     }
 
-    // We saw another bot -> fire!
     public override void OnScannedBot(ScannedBotEvent evt)
     {
-        Fire(1);
+        var distance = DistanceTo(evt.X, evt.Y);
+        SmartFire(distance);
     }
 
     // We were hit by a bullet -> turn perpendicular to the bullet
@@ -36,5 +40,22 @@ public class SaucyTankBot : Bot
 
         // Turn 90 degrees to the bullet direction based on the bearing
         TurnLeft(90 - bearing);
+    }
+
+    public override void OnHitWall(HitWallEvent evt)
+    {
+        Back(20);
+        TurnRight(90);
+        Forward(40);
+    }
+
+    private void SmartFire(double distance)
+    {
+        if (distance > 200 || Energy < 15)
+            Fire(1);
+        else if (distance > 50)
+            Fire(2);
+        else
+            Fire(3);
     }
 }
