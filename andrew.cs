@@ -40,6 +40,7 @@ public class SaucyTankBot : Bot
 
         // Turn 90 degrees to the bullet direction based on the bearing
         TurnLeft(90 - bearing);
+        Forward(200);
     }
 
     public override void OnHitWall(HitWallEvent evt)
